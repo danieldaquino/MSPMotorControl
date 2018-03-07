@@ -8,6 +8,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./PWMMotor.obj" \
 "./UARTIO.obj" \
 "./VelocityGauge.obj" \
 "./main.obj" \
@@ -155,8 +156,8 @@ MSPMotorControl.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "UARTIO.obj" "VelocityGauge.obj" "main.obj" 
-	-$(RM) "UARTIO.d" "VelocityGauge.d" "main.d" 
+	-$(RM) "PWMMotor.obj" "UARTIO.obj" "VelocityGauge.obj" "main.obj" 
+	-$(RM) "PWMMotor.d" "UARTIO.d" "VelocityGauge.d" "main.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

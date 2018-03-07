@@ -17,8 +17,8 @@
 	
 	Make sure you have GLOBAL INTERRUPTS ENABLED! OTHERWISE IT WILL NOT WORK
 	
-	P1.2 must be connected to a motor encoder channel
-	This module will modify P1.2, so do not use any other modules that use it.
+	P1.3 must be connected to a motor encoder channel
+	This module will modify P1.3, so do not use any other modules that use it.
 	This module will also modify Timer A1. Beware.
 	
 	Note:If you want to use another pins, modify the Macros. Make sure to use an
@@ -37,7 +37,7 @@ Macros
 #define P_ENCODER_IV P1IV
 #define P_ENCODER_REN P1REN
 
-#define ENCODER_BIT BIT2
+#define ENCODER_BIT BIT3
 
 #define COUNTS_PER_REV 11.0
 #define GEAR_RATIO 20.4
@@ -78,7 +78,7 @@ void velocityTimerISR(void);
 This function initializes all parameters necessary
 inputs: none
 outputs: none
-Globals affected: Encoder pin (usually P1.2), Timer A1 configurations
+Globals affected: Encoder pin (usually P1.3), Timer A1 configurations
 ======*/
 void velocityGaugeInit(void);
 

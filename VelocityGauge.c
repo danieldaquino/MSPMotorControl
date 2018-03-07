@@ -10,10 +10,10 @@
 	
 	Requirements for use:
 	
-	P1.2 must be connected to a motor encoder channel
-	This module will modify P1.2, so do not use any other modules that use it.
+	P1.3 must be connected to a motor encoder channel
+	This module will modify P1.3, so do not use any other modules that use it.
 	
-	Note:If you want to use another pins, modify the Macros as well as the ISR. Make sure to use an
+	Note:If you want to use another pin, modify the Macros as well as the ISR. Make sure to use an
 	interrupt enabled port like P1 or P2
 	
 	For function descriptions and usage, please visit VelocityGauge.h
@@ -26,7 +26,7 @@
 //To do: Create shared port ISR driver module
 #pragma vector=PORT1_VECTOR
 __interrupt void encoderISR(void) {
-	switch(__even_in_range(P_ENCODER_IV,6)) {
+	switch(__even_in_range(P_ENCODER_IV,8)) {
 		case 0x0:
 			//Nothing. How did we end up here?
 			break;
@@ -36,7 +36,10 @@ __interrupt void encoderISR(void) {
 		case 0x04:
 			//P1.1 - Not interested
 		case 0x06:
-			//P1.2 - an encoder count!
+			//P1.2 - Not interested
+			break;
+		case 0x08:
+			//P1.3 - an encoder count!
 			encoderCount++; //Increase count
 			break;
 		default:
