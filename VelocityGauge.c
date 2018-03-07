@@ -21,7 +21,7 @@
 ===============================*/
 
 #include <msp430.h>
-#include <VelocityGauge.h>
+#include "VelocityGauge.h"
 
 //To do: Create shared port ISR driver module
 #pragma vector=PORT1_VECTOR
