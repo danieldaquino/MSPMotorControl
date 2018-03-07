@@ -45,9 +45,25 @@ __interrupt void encoderISR(void) {
 	}
 }
 
+#pragma vector = TIMER1_A1_VECTOR
+__interrupt void velocityTimerISR(void) {
+	countsIn100ms = encoderCount; // Get encoder count
+	encoderCount = 0; // Reset encoder count
+	TA1CTL &= ~TAIFG; // Clear interrupt flag
+}
+
 void velocityGaugeInit(void) {
+	//Setup pins
 	P_ENCODER_DIR &= ~ENCODER_BIT; //Encoder is an input
 	P_ENCODER_IE |= ENCODER_BIT; //Enable interrupts for encoder
 	P_ENCODER_REN |= ENCODER_BIT; //Enable Pull up/down resistor
 	P_ENCODER_OUT &= ~ENCODER_BIT; // Pull down resistor
+	
+	//Setup TimerA1 for velocity measurements
+	// TASSEL_1: ACLK = 32KHz
+	// ID_3: Divide by 8. We are at 4KHz
+	// MC_1: Up mode. Counts to TA1CCR0
+	TA1CTL = TASSEL_1 | ID_3 | MC_1 | TAIE;
+	TA1CTL &= ~TAIFG; //Clear interrupts
+	TA1CCR0 = 400; // Make interrupts happen at 10Hz
 }

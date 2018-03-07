@@ -19,6 +19,7 @@
 	
 	P1.2 must be connected to a motor encoder channel
 	This module will modify P1.2, so do not use any other modules that use it.
+	This module will also modify Timer A1. Beware.
 	
 	Note:If you want to use another pins, modify the Macros. Make sure to use an
 	interrupt enabled port like P1 or P2
@@ -42,6 +43,7 @@ Macros
 Globals
 =======*/
 long int encoderCount;
+long int countsIn100ms;
 
 /*=======
 Function Prototypes
@@ -58,12 +60,22 @@ Globals affected: encoderCounts
 void encoderISR(void);
 
 /*======
+~~velocityTimerISR~~
+
+This function will record the number of counts within 100ms (or the Timer A setting)
+inputs: none
+outputs: none
+Globals affected: encoderCounts, countsIn100ms
+=======*/
+void velocityTimerISR(void);
+
+/*======
 ~~velocityGaugeInit~~
 
 This function initializes all parameters necessary
 inputs: none
 outputs: none
-Globals affected: Encoder pin (usually P1.2)
+Globals affected: Encoder pin (usually P1.2), Timer A1 configurations
 ======*/
 void velocityGaugeInit(void);
 

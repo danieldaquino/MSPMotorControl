@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+# ccs misc
+.launches
+
 # Object files
 *.o
 *.ko
