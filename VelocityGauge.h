@@ -39,6 +39,9 @@ Macros
 
 #define ENCODER_BIT BIT2
 
+#define COUNTS_PER_REV 11.0
+#define GEAR_RATIO 20.4
+
 /*=======
 Globals
 =======*/
@@ -78,5 +81,17 @@ outputs: none
 Globals affected: Encoder pin (usually P1.2), Timer A1 configurations
 ======*/
 void velocityGaugeInit(void);
+
+/*======
+~~getRPM~~
+
+returns the RPM speed of gearmotor
+
+inputs: none
+outputs: 
+	(double) Velocity of gearmotor shaft, in RPM.
+Globals affected: none
+======*/
+float getRPM(void);
 
 #endif

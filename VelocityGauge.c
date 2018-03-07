@@ -52,6 +52,10 @@ __interrupt void velocityTimerISR(void) {
 	TA1CTL &= ~TAIFG; // Clear interrupt flag
 }
 
+float getRPM(void){
+	return (60*((double) countsIn100ms*10)/COUNTS_PER_REV)/GEAR_RATIO;
+}
+
 void velocityGaugeInit(void) {
 	//Setup pins
 	P_ENCODER_DIR &= ~ENCODER_BIT; //Encoder is an input

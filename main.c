@@ -18,7 +18,7 @@ int main(void)
 	while(1) {
 		//Nothing yet
 		char LeString[30];
-		sprintf(LeString, "Current Speed: %d\n\r", countsIn100ms);
+		sprintf(LeString, "Current Speed: %d RPM\n\r", (int) getRPM());
 		UARTIOSend(LeString);
 		__delay_cycles(1000000);
 	}
