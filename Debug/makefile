@@ -8,8 +8,9 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./VelocityGauge.obj" \
 "./main.obj" \
-"../lnk_msp430f5229.cmd" \
+"../lnk_msp430f5529.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibmath.a \
 -llibc.a \
@@ -139,7 +140,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 MSPMotorControl.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Linker'
-	"/Applications/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/bin/cl430" -vmspx --data_model=restricted --use_hw_mpy=F5 --advice:power=all --define=__MSP430F5229__ -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"MSPMotorControl.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"/Applications/ti/ccsv7/ccs_base/msp430/include" -i"/Applications/ti/ccsv7/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"/Applications/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/lib" -i"/Applications/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="MSPMotorControl_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "MSPMotorControl.out" $(ORDERED_OBJS)
+	"/Applications/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/bin/cl430" -vmspx --data_model=restricted --use_hw_mpy=F5 --advice:power=all --define=__MSP430F5529__ -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU23 --silicon_errata=CPU40 -z -m"MSPMotorControl.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"/Applications/ti/ccsv7/ccs_base/msp430/include" -i"/Applications/ti/ccsv7/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"/Applications/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/lib" -i"/Applications/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.6.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="MSPMotorControl_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "MSPMotorControl.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
@@ -153,8 +154,8 @@ MSPMotorControl.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" 
-	-$(RM) "main.d" 
+	-$(RM) "VelocityGauge.obj" "main.obj" 
+	-$(RM) "VelocityGauge.d" "main.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

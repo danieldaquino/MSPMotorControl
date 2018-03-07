@@ -15,6 +15,8 @@
 	
 	Requirements for use:
 	
+	Make sure you have GLOBAL INTERRUPTS ENABLED! OTHERWISE IT WILL NOT WORK
+	
 	P1.2 must be connected to a motor encoder channel
 	This module will modify P1.2, so do not use any other modules that use it.
 	
@@ -32,13 +34,14 @@ Macros
 #define P_ENCODER_IE P1IE
 #define P_ENCODER_IFG P1IFG
 #define P_ENCODER_IV P1IV
+#define P_ENCODER_REN P1REN
 
 #define ENCODER_BIT BIT2
 
 /*=======
 Globals
 =======*/
-long int encoderCounts;
+long int encoderCount;
 
 /*=======
 Function Prototypes
